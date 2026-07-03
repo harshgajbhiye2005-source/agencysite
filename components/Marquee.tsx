@@ -1,24 +1,28 @@
-import { marqueeItems } from "@/lib/content";
+import Image from "next/image";
+import { designMarquee } from "@/lib/content";
 
+// Giant scrolling strip: DESIGN ● SOLUTION ● DEFINE with photo bubbles.
 export default function Marquee() {
-  // Track is duplicated so the -50% translate loops seamlessly.
-  const items = [...marqueeItems, ...marqueeItems];
+  const items = [...designMarquee.words, ...designMarquee.words];
 
   return (
-    <div className="border-y border-line py-6 overflow-hidden">
-      <div className="marquee-track">
-        {items.map((item, i) => (
-          <span
-            key={i}
-            className="mx-8 flex items-center gap-8 whitespace-nowrap text-2xl font-semibold uppercase tracking-wide text-muted"
-          >
-            {item}
-            <span aria-hidden className="text-accent">
-              ✦
+    <section className="overflow-hidden bg-background py-24">
+      <div className="marquee-track items-center" style={{ animationDuration: "30s" }}>
+        {items.map((word, i) => (
+          <span key={i} className="flex items-center">
+            <span className="whitespace-nowrap text-[232px] font-semibold uppercase leading-none tracking-[-0.02em] text-ink">
+              {word}
             </span>
+            <Image
+              src={designMarquee.images[i % designMarquee.images.length]}
+              alt=""
+              width={162}
+              height={162}
+              className="mx-14 h-[162px] w-[162px] rounded-full object-cover"
+            />
           </span>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

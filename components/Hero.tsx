@@ -1,115 +1,93 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { site } from "@/lib/content";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { hero } from "@/lib/content";
+import RollLink from "@/components/RollLink";
 
-const lines = ["We design", "brands & websites", "people remember."];
+// Two vertical columns of site-screenshot tiles that scroll in a loop.
+function TileMarquee() {
+  return (
+    <div className="flex h-[202px] w-[300px] gap-0.5 overflow-hidden">
+      {[0, 1].map((col) => {
+        // Stagger the second column so rows don't repeat side by side.
+        const tiles = [...hero.tiles.slice(col), ...hero.tiles.slice(0, col)];
+        const loop = [...tiles, ...tiles, ...tiles, ...tiles];
+        return (
+          <div key={col} className="marquee-y-track gap-0.5">
+            {loop.map((tile, i) => (
+              <Image
+                key={i}
+                src={tile}
+                alt=""
+                width={149}
+                height={75}
+                className="h-[75px] w-[149px] object-cover"
+              />
+            ))}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
   return (
-    <section
-      ref={ref}
-      id="top"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6"
-    >
-      {/* Ambient glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-40 right-[-10%] h-[36rem] w-[36rem] rounded-full opacity-20 blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle, var(--accent) 0%, transparent 70%)",
-        }}
-      />
-
-      <motion.div style={{ y, opacity }} className="mx-auto w-full max-w-6xl">
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="mb-6 text-sm uppercase tracking-[0.3em] text-muted"
-        >
-          {site.name} — Creative Studio
-        </motion.p>
-
-        <h1 className="text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl lg:text-8xl">
-          {lines.map((line, i) => (
-            <span key={line} className="block overflow-hidden">
-              <motion.span
-                className="block"
-                initial={{ y: "110%" }}
-                animate={{ y: "0%" }}
-                transition={{
-                  duration: 0.9,
-                  delay: 0.35 + i * 0.14,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-              >
-                {i === 2 ? (
-                  <>
-                    people <em className="not-italic text-accent">remember.</em>
-                  </>
-                ) : (
-                  line
-                )}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
+    <section className="relative overflow-hidden bg-background pb-40">
+      <div className="relative mx-auto max-w-[1440px] px-[70px]">
+        <motion.h1
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
-          className="mt-8 max-w-md text-lg text-muted"
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="pt-12 text-center text-[166px] font-semibold uppercase leading-none tracking-[-0.04em] text-ink"
         >
-          {site.tagline}
-        </motion.p>
+          {hero.title}
+        </motion.h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.05, duration: 0.8 }}
-          className="mt-10 flex flex-wrap items-center gap-4"
-        >
-          <a
-            href="#work"
-            className="rounded-full bg-foreground px-7 py-3 text-sm font-semibold text-background transition-transform hover:scale-105"
-          >
-            See our work
-          </a>
-          <a
-            href="#contact"
-            className="rounded-full border border-line px-7 py-3 text-sm font-semibold transition-colors hover:border-accent hover:text-accent"
-          >
-            Get in touch
-          </a>
-        </motion.div>
-      </motion.div>
+        <div className="relative mt-12 grid grid-cols-[1fr_420px_1fr] items-end gap-10">
+          {/* Left: designer label + scrolling screenshot tiles */}
+          <div className="pb-[196px]">
+            <p className="mb-7">
+              <RollLink>{hero.label}</RollLink>
+            </p>
+            <TileMarquee />
+          </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[0.25em] text-muted"
-      >
-        <motion.span
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-          className="inline-block"
-        >
-          Scroll ↓
-        </motion.span>
-      </motion.div>
+          {/* Center: portrait over a rotated gradient sheet */}
+          <div className="relative h-[628px] w-[420px]">
+            <motion.div
+              aria-hidden
+              initial={{ rotate: 0, opacity: 0 }}
+              animate={{ rotate: 11, opacity: 1 }}
+              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(var(--gradient-pink) 0%, var(--gradient-blue) 100%)",
+              }}
+            />
+            <Image
+              src={hero.portrait}
+              alt={hero.title}
+              width={420}
+              height={628}
+              priority
+              className="relative h-full w-full object-cover"
+            />
+          </div>
+
+          {/* Right: intro + availability */}
+          <div className="self-end pb-[52px] pl-20">
+            <p className="text-base leading-[1.7] text-ink">
+              {hero.paragraph}
+            </p>
+            <p className="mt-10">
+              <RollLink>{hero.availability}</RollLink>
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

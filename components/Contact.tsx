@@ -1,104 +1,74 @@
-"use client";
-
-import { useState } from "react";
+import Image from "next/image";
+import { contact } from "@/lib/content";
 import Reveal from "@/components/Reveal";
-import { site } from "@/lib/content";
+
+function Field({
+  label,
+  placeholder,
+  type = "text",
+}: {
+  label: string;
+  placeholder: string;
+  type?: string;
+}) {
+  return (
+    <label className="block">
+      <span className="text-2xl font-semibold uppercase tracking-[-0.01em] text-ink">
+        {label}
+      </span>
+      <input
+        type={type}
+        placeholder={placeholder}
+        className="mt-5 w-full border-b border-line bg-transparent pb-3 text-base text-ink outline-none placeholder:text-muted focus:border-ink"
+      />
+    </label>
+  );
+}
 
 export default function Contact() {
-  const [sent, setSent] = useState(false);
-
   return (
-    <section id="contact" className="mx-auto max-w-6xl px-6 py-28">
-      <div className="grid gap-16 lg:grid-cols-2">
+    <section id="contact" className="bg-background pb-32 pt-36">
+      <div className="mx-auto max-w-[1440px] px-[70px]">
         <Reveal>
-          <p className="mb-3 text-sm uppercase tracking-[0.3em] text-accent">
-            Contact
-          </p>
-          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">
-            Let&apos;s build something together.
+          <h2 className="mx-auto max-w-[1100px] text-center text-[120px] font-semibold uppercase leading-none tracking-[-0.02em] text-ink">
+            {contact.heading}
           </h2>
-          <p className="mt-6 max-w-md text-lg text-muted">
-            Tell us about your project — we usually reply within one business
-            day.
-          </p>
-          <div className="mt-10 space-y-3 text-lg">
-            <a
-              href={`mailto:${site.email}`}
-              className="block w-fit transition-colors hover:text-accent"
-            >
-              {site.email}
-            </a>
-            <a
-              href={`tel:${site.phone.replace(/\s/g, "")}`}
-              className="block w-fit transition-colors hover:text-accent"
-            >
-              {site.phone}
-            </a>
-            <p className="text-muted">{site.location}</p>
-          </div>
         </Reveal>
 
-        <Reveal delay={0.15}>
-          {sent ? (
-            <div className="flex h-full min-h-64 items-center justify-center rounded-2xl border border-accent/40 bg-surface p-8 text-center">
-              <div>
-                <p className="text-2xl font-semibold text-accent">
-                  Thanks — message noted!
-                </p>
-                <p className="mt-3 text-muted">
-                  This is a demo form. Wire it to email or a form service
-                  before launch.
-                </p>
-              </div>
-            </div>
-          ) : (
-            <form
-              className="space-y-5"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
+        <div className="mt-28 grid grid-cols-[1fr_500px] gap-24">
+          <form className="grid h-max grid-cols-2 gap-x-16 gap-y-16">
+            <Field label="Name*" placeholder="Jane Smith" />
+            <Field label="Email*" placeholder="jane@framer.com" type="email" />
+            <Field label="Phone Number *" placeholder="+44" type="tel" />
+            <Field label="Where From? *" placeholder="Company / Organization" />
+            <label className="col-span-2 block">
+              <span className="text-2xl font-semibold uppercase tracking-[-0.01em] text-ink">
+                About Your Project
+              </span>
+              <textarea
+                placeholder="What you'd like to create..."
+                rows={4}
+                className="mt-5 w-full resize-y border-b border-line bg-transparent pb-3 text-base text-ink outline-none placeholder:text-muted focus:border-ink"
+              />
+            </label>
+            <button
+              type="submit"
+              className="col-span-2 mt-4 h-[52px] w-[200px] bg-ink text-base font-semibold uppercase tracking-[-0.02em] text-white transition-opacity hover:opacity-80"
             >
-              <div className="grid gap-5 sm:grid-cols-2">
-                <label className="block">
-                  <span className="mb-2 block text-sm text-muted">Name</span>
-                  <input
-                    required
-                    type="text"
-                    placeholder="Your name"
-                    className="w-full rounded-xl border border-line bg-surface px-4 py-3 outline-none transition-colors placeholder:text-muted/60 focus:border-accent"
-                  />
-                </label>
-                <label className="block">
-                  <span className="mb-2 block text-sm text-muted">Email</span>
-                  <input
-                    required
-                    type="email"
-                    placeholder="you@example.com"
-                    className="w-full rounded-xl border border-line bg-surface px-4 py-3 outline-none transition-colors placeholder:text-muted/60 focus:border-accent"
-                  />
-                </label>
-              </div>
-              <label className="block">
-                <span className="mb-2 block text-sm text-muted">
-                  What do you need?
-                </span>
-                <textarea
-                  required
-                  rows={5}
-                  placeholder="Tell us about the project..."
-                  className="w-full rounded-xl border border-line bg-surface px-4 py-3 outline-none transition-colors placeholder:text-muted/60 focus:border-accent"
-                />
-              </label>
-              <button
-                type="submit"
-                className="w-full rounded-full bg-accent px-7 py-4 text-sm font-semibold text-background transition-transform hover:scale-[1.02] sm:w-auto"
-              >
-                Send message
-              </button>
-            </form>
-          )}
-        </Reveal>
+              [ Send a Request ]
+            </button>
+          </form>
+
+          <Reveal>
+            <Image
+              src={contact.image}
+              alt=""
+              width={500}
+              height={780}
+              className="h-[780px] w-[500px] object-cover"
+            />
+          </Reveal>
+        </div>
       </div>
     </section>
   );

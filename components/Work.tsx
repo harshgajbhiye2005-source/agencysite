@@ -1,53 +1,58 @@
-"use client";
-
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { sponsorRows, works } from "@/lib/content";
 import Reveal from "@/components/Reveal";
-import { projects } from "@/lib/content";
+import RollLink from "@/components/RollLink";
 
 export default function Work() {
   return (
-    <section id="work" className="mx-auto max-w-6xl px-6 py-28">
-      <Reveal>
-        <p className="mb-3 text-sm uppercase tracking-[0.3em] text-accent">
-          Selected Work
-        </p>
-        <h2 className="max-w-xl text-4xl font-bold tracking-tight sm:text-5xl">
-          Projects we&apos;re proud of.
-        </h2>
-      </Reveal>
+    <section className="bg-background py-24">
+      <div className="mx-auto max-w-[1440px] px-[70px]">
+        <Reveal>
+          <h2 className="max-w-[900px] text-[120px] font-semibold uppercase leading-none tracking-[-0.02em] text-ink">
+            Featured Works
+          </h2>
+        </Reveal>
 
-      <div className="mt-16 grid gap-10 sm:grid-cols-2">
-        {projects.map((project, i) => (
-          <Reveal key={project.title} delay={(i % 2) * 0.12}>
-            <motion.a
-              href="#contact"
-              whileHover="hover"
-              className="group block"
+        <div className="mt-10">
+          {works.map((work) => (
+            <Reveal key={work.title}>
+              <a
+                href="#"
+                className="group grid grid-cols-3 items-center border-t border-line py-7 last:border-b"
+              >
+                <h3 className="text-[32px] font-semibold uppercase leading-tight tracking-[-0.02em] text-[#555] transition-colors group-hover:text-ink">
+                  {work.title}
+                </h3>
+                <p className="text-center text-base text-ink">{work.year}</p>
+                <p className="text-right text-base text-ink">{work.client}</p>
+              </a>
+            </Reveal>
+          ))}
+          <div className="border-t border-line" />
+        </div>
+
+        <p className="mt-20 text-center">
+          <RollLink>MORE WORKS</RollLink>
+        </p>
+
+        {/* Sponsor logo grid on a 4-column rhythm: cols 1-3, 1-4, then 2-3 */}
+        <div className="mt-28 flex flex-col gap-[26px]">
+          {sponsorRows.map((row, r) => (
+            <div
+              key={r}
+              className={`flex gap-[26px] ${r === 2 ? "justify-center" : "justify-start"}`}
             >
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-                <motion.div
-                  variants={{ hover: { scale: 1.06 } }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`}
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="rounded-full bg-background/60 px-4 py-2 text-xs uppercase tracking-widest opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
-                    View project →
-                  </span>
+              {row.map((logo) => (
+                <div
+                  key={logo}
+                  className="flex h-[172px] w-[300px] items-center justify-center border border-line"
+                >
+                  <Image src={logo} alt="Sponsor" width={175} height={30} />
                 </div>
-              </div>
-              <div className="mt-5 flex items-baseline justify-between">
-                <div>
-                  <h3 className="text-xl font-semibold transition-colors group-hover:text-accent">
-                    {project.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted">{project.category}</p>
-                </div>
-                <span className="text-sm text-muted">{project.year}</span>
-              </div>
-            </motion.a>
-          </Reveal>
-        ))}
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

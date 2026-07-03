@@ -1,82 +1,47 @@
-"use client";
-
-import { useState } from "react";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import Image from "next/image";
 import { nav, site } from "@/lib/content";
+import RollLink from "@/components/RollLink";
 
 export default function Nav() {
-  const { scrollY } = useScroll();
-  const [hidden, setHidden] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() ?? 0;
-    setHidden(latest > previous && latest > 160 && !open);
-    setScrolled(latest > 24);
-  });
-
   return (
-    <motion.header
-      animate={{ y: hidden ? "-100%" : "0%" }}
-      transition={{ duration: 0.35, ease: "easeInOut" }}
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open
-          ? "bg-background/80 backdrop-blur-md border-b border-line"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <a href="#top" className="text-lg font-bold tracking-tight">
-          {site.name}
-          <span className="text-accent">.</span>
+    <header className="bg-background">
+      <div className="relative mx-auto flex h-[86px] max-w-[1440px] items-center justify-between px-[70px]">
+        <a href="#" className="flex items-center">
+          <Image src={site.logo} alt="Logo" width={180} height={38} priority />
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm text-muted transition-colors hover:text-foreground"
-            >
-              {item.label}
-            </a>
-          ))}
-          <a
-            href="#contact"
-            className="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-background transition-transform hover:scale-105"
-          >
-            Start a project
-          </a>
+        <nav className="absolute left-1/2 -translate-x-1/2">
+          <ul className="flex items-center gap-12">
+            {nav.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  className="flex items-center gap-1.5 text-base uppercase text-ink transition-opacity hover:opacity-60"
+                >
+                  {item.label}
+                  {item.dropdown && (
+                    <svg
+                      width="12"
+                      height="8"
+                      viewBox="0 0 12 8"
+                      fill="none"
+                      aria-hidden
+                    >
+                      <path
+                        d="M1 1.5L6 6.5L11 1.5"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      />
+                    </svg>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
         </nav>
 
-        <button
-          className="md:hidden text-2xl"
-          aria-label="Toggle menu"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? "✕" : "☰"}
-        </button>
+        <RollLink href="#contact">LET&rsquo;S TALK</RollLink>
       </div>
-
-      {open && (
-        <motion.nav
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col gap-1 border-b border-line px-6 pb-6 md:hidden"
-        >
-          {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="py-3 text-lg text-muted transition-colors hover:text-foreground"
-            >
-              {item.label}
-            </a>
-          ))}
-        </motion.nav>
-      )}
-    </motion.header>
+    </header>
   );
 }

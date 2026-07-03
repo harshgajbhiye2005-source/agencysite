@@ -1,23 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0b0f;
-  --foreground: #f4f4f2;
-  --muted: #8b8b93;
-  --accent: #c8f04a; /* PLACEHOLDER accent — swap for brand color */
-  --surface: #141419;
-  --line: rgba(244, 244, 242, 0.1);
+  --background: #ffffff;
+  --foreground: #0d0d0d;
+  --muted: #555555;
+  --grey-bg: #f0f0f0;
+  --line: rgba(34, 34, 34, 0.14);
+  --line-dark: rgba(255, 255, 255, 0.1);
+  --accent: #d6fb03;
+  --gradient-pink: #ff80ee;
+  --gradient-blue: #95baff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-ink: var(--foreground);
   --color-muted: var(--muted);
-  --color-accent: var(--accent);
-  --color-surface: var(--surface);
+  --color-grey-bg: var(--grey-bg);
   --color-line: var(--line);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-line-dark: var(--line-dark);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-inter);
 }
 
 html {
@@ -27,17 +31,12 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Inter, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-::selection {
-  background: var(--accent);
-  color: var(--background);
-}
-
-/* Infinite marquee */
+/* Infinite horizontal marquee */
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -50,18 +49,66 @@ body {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 28s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 
-.marquee-track:hover {
-  animation-play-state: paused;
+/* Infinite vertical marquee (hero screenshot tiles) */
+@keyframes marquee-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.marquee-y-track {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  animation: marquee-y 18s linear infinite;
+}
+
+/* Bracketed label with rolling text on hover: [ LET'S TALK ] */
+.roll-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  cursor: pointer;
+}
+
+.roll-link .roll-mask {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.roll-link .roll-inner {
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.roll-link:hover .roll-inner {
+  transform: translateY(-100%);
+}
+
+.roll-link .roll-copy {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track {
+  .marquee-track,
+  .marquee-y-track {
     animation: none;
   }
   html {
     scroll-behavior: auto;
+  }
+  .roll-link .roll-inner {
+    transition: none;
   }
 }

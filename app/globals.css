@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0b0f;
-  --foreground: #f4f4f2;
-  --muted: #8b8b93;
-  --accent: #c8f04a; /* PLACEHOLDER accent — swap for brand color */
-  --surface: #141419;
-  --line: rgba(244, 244, 242, 0.1);
+  --background: #f5f3ef;
+  --foreground: #181611;
+  --muted: #77746c;
+  --accent: #181611; /* refined mono palette — swap for brand color */
+  --surface: #ecebe6;
+  --line: rgba(24, 22, 17, 0.1);
 }
 
 @theme inline {
@@ -16,8 +16,8 @@
   --color-accent: var(--accent);
   --color-surface: var(--surface);
   --color-line: var(--line);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-instrument-serif);
 }
 
 html {
@@ -27,13 +27,19 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
+.font-serif-display {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+
 ::selection {
-  background: var(--accent);
+  background: var(--foreground);
   color: var(--background);
 }
 

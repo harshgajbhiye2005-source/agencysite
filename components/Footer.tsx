@@ -6,11 +6,15 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <a href="#top" className="text-2xl font-bold tracking-tight">
+            <a href="#top" className="text-2xl font-semibold tracking-tight">
               {site.name}
-              <span className="text-accent">.</span>
+              <span aria-hidden className="font-serif-display">
+                .
+              </span>
             </a>
-            <p className="mt-3 max-w-xs text-sm text-muted">{site.tagline}</p>
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
+              {site.tagline}
+            </p>
           </div>
 
           <div className="flex gap-16">
@@ -22,7 +26,7 @@ export default function Footer() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="text-sm transition-colors hover:text-accent"
+                  className="text-sm text-muted transition-colors hover:text-foreground"
                 >
                   {item.label}
                 </a>
@@ -36,7 +40,7 @@ export default function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
-                  className="text-sm transition-colors hover:text-accent"
+                  className="text-sm text-muted transition-colors hover:text-foreground"
                 >
                   {social.label}
                 </a>
@@ -49,7 +53,7 @@ export default function Footer() {
           <span>
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </span>
-          <a href="#top" className="transition-colors hover:text-accent">
+          <a href="#top" className="transition-colors hover:text-foreground">
             Back to top ↑
           </a>
         </div>

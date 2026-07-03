@@ -1,18 +1,22 @@
 // ============================================================
-// PLACEHOLDER CONTENT — swap every value here for real company
-// content. All components read from this single file.
+// PLACEHOLDER CONTENT — swap every value here for the client's
+// real content. All components read from this single file.
 // ============================================================
 
 export const site = {
-  name: "Acme Studio",
-  tagline: "A creative studio for brands that want to be remembered.",
+  name: "Miranda",
+  firstName: "Miranda",
+  role: "Digital Designer & Art Director",
+  tagline:
+    "I help ambitious brands stand out through thoughtful design — from identity systems to immersive digital experiences.",
   email: "hello@example.com",
   phone: "+91 00000 00000",
-  location: "Nagpur, India",
+  location: "Mumbai, India",
+  availability: "Available for new projects",
   socials: [
     { label: "Instagram", href: "#" },
     { label: "LinkedIn", href: "#" },
-    { label: "X / Twitter", href: "#" },
+    { label: "Dribbble", href: "#" },
     { label: "Behance", href: "#" },
   ],
 };
@@ -25,39 +29,43 @@ export const nav = [
 ];
 
 export const marqueeItems = [
-  "Branding",
+  "Brand Identity",
   "Web Design",
-  "Development",
-  "Strategy",
+  "Art Direction",
+  "Product Design",
   "Motion",
-  "Content",
+  "Creative Strategy",
 ];
 
 export const projects = [
   {
-    title: "Project One",
+    title: "Lumen Studio",
     category: "Brand Identity",
     year: "2026",
     // Gradient stands in for a project image — replace with real photos later.
-    gradient: "from-orange-400 via-rose-500 to-purple-600",
+    gradient: "from-stone-300 via-amber-100 to-orange-200",
+    span: "wide" as const,
   },
   {
-    title: "Project Two",
+    title: "Nova Finance",
     category: "Web Design",
     year: "2025",
-    gradient: "from-cyan-400 via-blue-500 to-indigo-600",
+    gradient: "from-slate-300 via-sky-100 to-indigo-200",
+    span: "narrow" as const,
   },
   {
-    title: "Project Three",
+    title: "Atelier Verde",
     category: "E-commerce",
     year: "2025",
-    gradient: "from-lime-300 via-emerald-500 to-teal-700",
+    gradient: "from-emerald-200 via-lime-100 to-stone-200",
+    span: "narrow" as const,
   },
   {
-    title: "Project Four",
-    category: "Motion & Content",
+    title: "Pulse App",
+    category: "Product Design",
     year: "2024",
-    gradient: "from-amber-300 via-orange-500 to-red-600",
+    gradient: "from-rose-200 via-orange-100 to-amber-200",
+    span: "wide" as const,
   },
 ];
 
@@ -73,14 +81,14 @@ export const services = [
       "Placeholder copy — fast, responsive websites designed to convert visitors and built to last.",
   },
   {
-    title: "Digital Strategy",
+    title: "Art Direction",
     description:
-      "Placeholder copy — positioning, messaging, and go-to-market plans grounded in research.",
+      "Placeholder copy — a consistent creative vision across campaigns, photography, and content.",
   },
   {
-    title: "Motion & Content",
+    title: "Motion & Interaction",
     description:
-      "Placeholder copy — video, animation, and social content that keeps audiences engaged.",
+      "Placeholder copy — micro-interactions and animation that bring digital products to life.",
   },
 ];
 
@@ -94,13 +102,13 @@ export const stats = [
 export const testimonials = [
   {
     quote:
-      "Placeholder testimonial — working with the team was seamless from kickoff to launch. The results spoke for themselves.",
+      "Placeholder testimonial — working together was seamless from kickoff to launch. The results spoke for themselves.",
     name: "Client Name",
     role: "CEO, Company One",
   },
   {
     quote:
-      "Placeholder testimonial — they understood our brand better than we did and translated it into a site we're proud of.",
+      "Placeholder testimonial — she understood our brand better than we did and translated it into a site we're proud of.",
     name: "Client Name",
     role: "Founder, Company Two",
   },

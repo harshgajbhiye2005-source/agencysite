@@ -1,0 +1,24 @@
+import { marqueeItems } from "@/lib/content";
+
+export default function Marquee() {
+  // Track is duplicated so the -50% translate loops seamlessly.
+  const items = [...marqueeItems, ...marqueeItems];
+
+  return (
+    <div className="border-y border-line py-6 overflow-hidden">
+      <div className="marquee-track">
+        {items.map((item, i) => (
+          <span
+            key={i}
+            className="mx-8 flex items-center gap-8 whitespace-nowrap text-2xl font-semibold uppercase tracking-wide text-muted"
+          >
+            {item}
+            <span aria-hidden className="text-accent">
+              ✦
+            </span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}

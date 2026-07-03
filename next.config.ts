@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Static export so the site can be hosted on GitHub Pages.
+  output: "export",
+  // The Pages site lives at <user>.github.io/agencysite — assets must resolve
+  // under that subpath. Remove basePath when moving to a custom domain.
+  basePath: process.env.PAGES_BASE_PATH ?? "",
+  images: { unoptimized: true },
 };
 
 export default nextConfig;

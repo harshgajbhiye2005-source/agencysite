@@ -21,6 +21,28 @@ export const site = {
   ],
 };
 
+// Everything search engines see is generated from this block (page title,
+// meta description, Open Graph tags, sitemap.xml, robots.txt, JSON-LD).
+export const seo = {
+  // The live URL of the deployed site, no trailing slash — e.g.
+  // "https://agencysite.netlify.app" or "https://youragency.com".
+  url: "https://example.com",
+  // Shown as the clickable headline in Google results (~60 chars max).
+  title: `${site.name} — ${site.role}`,
+  // Shown under the headline in Google results (~155 chars max). Include
+  // the terms clients actually search for, e.g. "web design agency in Nagpur".
+  description: site.intro,
+  keywords: [
+    "web design agency",
+    "UI UX design",
+    "website development",
+    "branding",
+  ],
+  // City for the LocalBusiness listing — keep in sync with site.location.
+  city: "Mumbai",
+  country: "IN",
+};
+
 export const nav = [
   { label: "Home", href: "#top" },
   { label: "Work", href: "#work" },

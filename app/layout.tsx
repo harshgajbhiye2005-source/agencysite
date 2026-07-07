@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { site, seo } from "@/lib/content";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -9,9 +10,47 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Miranda Halim — UI & UX Designer",
-  description:
-    "Placeholder — portfolio of a digital designer and web developer crafting bold, user-focused digital experiences.",
+  metadataBase: new URL(seo.url),
+  title: seo.title,
+  description: seo.description,
+  keywords: seo.keywords,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: site.brand,
+    title: seo.title,
+    description: seo.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: seo.title,
+    description: seo.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: site.brand,
+  description: seo.description,
+  url: seo.url,
+  email: site.email,
+  telephone: site.phone,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: seo.city,
+    addressCountry: seo.country,
+  },
+  sameAs: site.socials
+    .map((social) => social.href)
+    .filter((href) => href.startsWith("http")),
 };
 
 export default function RootLayout({
@@ -21,7 +60,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

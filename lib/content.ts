@@ -85,28 +85,6 @@ export const whyCards = [
   },
 ];
 
-// TODO: swap in real quotes from clients, mentors, or coaches.
-export const testimonials = [
-  {
-    quote:
-      "Harsh handled our website from brief to launch and kept us in the loop the whole way — exactly what you want from a partner.",
-    name: "Client Name",
-    role: "PS Group",
-  },
-  {
-    quote:
-      "Dependable, organized, and quick to pick things up — he made our operations smoother within weeks.",
-    name: "Mentor Name",
-    role: "Internship supervisor",
-  },
-  {
-    quote:
-      "The discipline he brings from cricket shows in his work: consistent, focused, and calm under pressure.",
-    name: "Coach Name",
-    role: "Coach",
-  },
-];
-
 // Rendered as [tag | thumbnails | title | detail] rows.
 export const achievements = [
   {

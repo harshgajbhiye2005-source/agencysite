@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Work from "@/components/Work";
 import Why from "@/components/Why";
-import Testimonials from "@/components/Testimonials";
 import MarqueeBand from "@/components/MarqueeBand";
 import Contact from "@/components/Contact";
 import Achievements from "@/components/Achievements";
@@ -17,7 +16,6 @@ export default function Home() {
       <Services />
       <Work />
       <Why />
-      <Testimonials />
       <MarqueeBand words={["Let’s collaborate", "Start a project"]} dark />
       <Contact />
       <MarqueeBand words={["Design", "Solutions"]} reverse />

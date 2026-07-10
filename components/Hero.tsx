@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { site } from "@/lib/content";
 import RollLink from "@/components/RollLink";
 
@@ -62,11 +63,16 @@ export default function Hero() {
               aria-hidden
               className="absolute -inset-x-4 inset-y-16 -rotate-[6deg] bg-indigo-200"
             />
-            {/* Portrait placeholder — swap for a real B&W photo */}
-            <div className="relative aspect-[3/4] w-full bg-gradient-to-b from-neutral-300 via-neutral-400 to-neutral-800 grayscale">
-              <span className="absolute inset-x-0 bottom-6 text-center text-xs font-semibold uppercase tracking-widest text-white/70">
-                Portrait placeholder
-              </span>
+            {/* Portrait — served from public/portrait.jpg; grayscale keeps the B&W look */}
+            <div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-400 grayscale">
+              <Image
+                src="/portrait.jpg"
+                alt={site.name}
+                fill
+                priority
+                sizes="(min-width: 1024px) 28rem, 100vw"
+                className="object-cover object-top"
+              />
             </div>
           </motion.div>
 

@@ -12,9 +12,9 @@ export default function Why() {
       <div className="mx-auto max-w-[95rem] px-5 sm:px-12">
         <Reveal className="text-center">
           <h2 className="display mx-auto max-w-4xl text-[clamp(2.4rem,8.3vw,7.5rem)]">
-            Why choose
+            Why work
             <br />
-            my service?
+            with me?
           </h2>
         </Reveal>
 

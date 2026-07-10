@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Miranda Halim — UI & UX Designer",
+  title: "Harsh Gajbhiye — Digital Marketing & Websites",
   description:
-    "Placeholder — portfolio of a digital designer and web developer crafting bold, user-focused digital experiences.",
+    "Portfolio of Harsh Gajbhiye — BBA Digital Marketing graduate from MIT-WPU, website builder for real clients, and national-level cricketer from Nagpur.",
 };
 
 export default function RootLayout({

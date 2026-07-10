@@ -1,152 +1,135 @@
 // ============================================================
-// PLACEHOLDER CONTENT — swap every value here for the client's
-// real content. All components read from this single file.
+// SITE CONTENT — everything the site displays lives here.
+// Lines marked TODO still need real details: edit the value,
+// push to main, and the live site updates automatically.
 // ============================================================
 
 export const site = {
-  brand: "Portfix",
-  name: "Miranda Halim",
-  role: "UI & UX Designer",
-  availability: "Available for task",
+  brand: "Harsh",
+  name: "Harsh Gajbhiye",
+  role: "Digital Marketing Graduate",
+  availability: "Open to opportunities",
   intro:
-    "I'm a digital designer and web developer crafting bold, user-focused experiences where aesthetics and usability meet.",
-  email: "hello@example.com",
-  phone: "+91 00000 00000",
-  location: "Mumbai, India",
+    "BBA graduate in Digital Marketing from MIT-WPU. I build websites for real clients and bring an athlete's discipline — honed on national and international cricket fields — to everything I do.",
+  email: "harsh.gajbhiye2005@gmail.com",
+  phone: "+91 95038 72686",
+  location: "Nagpur, Maharashtra",
   socials: [
-    { label: "Behance", href: "#" },
-    { label: "YouTube", href: "#" },
-    { label: "Dribbble", href: "#" },
-    { label: "Pinterest", href: "#" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/harsh-gajbhiye" },
+    { label: "GitHub", href: "https://github.com/harshgajbhiye2005-source" },
   ],
 };
 
 export const nav = [
   { label: "Home", href: "#top" },
-  { label: "Work", href: "#work" },
-  { label: "Service", href: "#services" },
+  { label: "Projects", href: "#work" },
+  { label: "Skills", href: "#services" },
   { label: "About me", href: "#about" },
 ];
 
+// Shown as the stack of cards in the dark "skills" section.
 export const services = [
   {
-    title: "UI & UX Design",
+    title: "Digital Marketing",
     description:
-      "Interfaces that feel effortless — research-driven flows, wireframes, and polished screens people enjoy using.",
-    tags: ["Minimal", "Website", "Visual", "UI/UX", "Usability"],
+      "BBA in Digital Marketing from MIT-WPU (8/10 GPA) — grounded in strategy, branding, and campaigns that actually reach people.",
+    tags: ["Strategy", "Branding", "Social Media", "SEO", "Campaigns"],
   },
   {
-    title: "Logo & Branding",
+    title: "Website Development",
     description:
-      "Identity systems with real presence: logo, type, and color working together so the brand is recognized at a glance.",
-    tags: ["Identity", "Logo", "Guidelines", "Print", "Digital"],
+      "I design and ship websites for real clients — from first brief to live launch, including PS Group and Artistically Yours.",
+    tags: ["Client Work", "Responsive", "Design", "Launch", "Maintenance"],
   },
   {
-    title: "Developer Support",
+    title: "Client Servicing & Operations",
     description:
-      "Design that ships. Clean handoffs, tokens, and close collaboration with engineers from first commit to launch.",
-    tags: ["Handoff", "Tokens", "QA", "Systems", "Launch"],
+      "Two internships across operations and client servicing — keeping projects moving, clients informed, and details handled.",
+    tags: ["Communication", "Coordination", "Process", "Delivery", "Follow-through"],
   },
   {
-    title: "Branding Strategy",
+    title: "Athlete's Discipline",
     description:
-      "Positioning and messaging grounded in research, so every touchpoint tells one clear, convincing story.",
-    tags: ["Research", "Positioning", "Voice", "Story", "Growth"],
+      "Cricket at the national and international level teaches what no classroom can: consistency, pressure handling, and showing up every day.",
+    tags: ["Teamwork", "Consistency", "Pressure", "Leadership", "Work Ethic"],
   },
 ];
 
+// Featured projects list — title / status / context.
 export const projects = [
-  { title: "Hillside Harmony", year: "2025", client: "Zentryx" },
-  { title: "Elmstone Retreat", year: "2024", client: "Nexora" },
-  { title: "Lakeview Bloom", year: "2024", client: "Fluxon" },
-  { title: "Cedarfield Court", year: "2023", client: "CodeVista" },
-];
-
-// Text wordmarks stand in for client logos — swap for real SVGs later.
-export const clientLogos = [
-  "Logoipsum",
-  "Brandmark",
-  "Nimbus",
-  "Vertex",
-  "Halcyon",
-  "Orbita",
-  "Kindred",
-  "Monolith",
-  "Atlas",
+  { title: "PS Group Website", year: "Completed", client: "Client work" },
+  { title: "Artistically Yours", year: "In progress", client: "Client work" },
+  { title: "Portfolio Website", year: "2026", client: "Personal · Next.js" },
 ];
 
 export const whyCards = [
   {
-    tag: "Secure",
-    text: "No complex steps — just smooth, secure and fast experiences.",
+    tag: "Disciplined",
+    text: "Trained like an athlete — consistent effort, no shortcuts, every single day.",
     tone: "from-neutral-400 to-neutral-700",
   },
   {
-    tag: "Smart",
-    text: "Smart choices and simple steps that lead to better products.",
+    tag: "Client-first",
+    text: "Internships in client servicing taught me to listen first and deliver on time.",
     tone: "from-neutral-500 to-neutral-800",
   },
   {
-    tag: "Instant",
-    text: "No complicated process — seamless delivery from day one.",
+    tag: "Fast learner",
+    text: "New tools, new briefs, new industries — give me a week, not a semester.",
     tone: "from-neutral-300 to-neutral-600",
   },
   {
-    tag: "Global",
-    text: "Works anywhere, anytime — built for a connected world.",
+    tag: "Team player",
+    text: "Years of team sport: communicate early, back your teammates, win together.",
     tone: "from-neutral-600 to-neutral-900",
   },
 ];
 
-export const testimonials = [
-  {
-    quote:
-      "Working together was a genuine pleasure — our vision became a digital experience beyond what we imagined.",
-    name: "Client Name",
-    role: "CEO",
-  },
-  {
-    quote:
-      "Remarkable attention to detail and creativity. Our website finally looks the way our brand deserves.",
-    name: "Client Name",
-    role: "CTO",
-  },
-  {
-    quote:
-      "They understood our brand instantly and turned it into a site that wins us clients every week.",
-    name: "Client Name",
-    role: "Founder",
-  },
-  {
-    quote:
-      "Fast, thoughtful, and invested in our success from kickoff to launch. We keep coming back.",
-    name: "Client Name",
-    role: "Marketing Lead",
-  },
-];
-
+// Rendered as [tag | thumbnails | title | detail] rows.
 export const achievements = [
-  { year: "2021", title: "Prism", award: "Best Website Designer" },
-  { year: "2022", title: "Square", award: "Site of the Month" },
-  { year: "2024", title: "VisiCraft", award: "Excellence in Interaction" },
+  {
+    year: "Education",
+    title: "BBA, Digital Marketing",
+    award: "MIT-WPU · 8/10 GPA",
+  },
+  {
+    year: "Cricket",
+    title: "International Level",
+    award: "Played internationally",
+  },
+  {
+    year: "Cricket",
+    title: "National Level",
+    award: "Represented Maharashtra",
+  },
+  {
+    year: "Badminton",
+    title: "District Level",
+    award: "Competitive player",
+  },
+  {
+    year: "Experience",
+    title: "2 Internships",
+    award: "Operations · Client Servicing",
+  },
 ];
 
 export const footerColumns = [
   {
     heading: "Quick links",
-    links: ["Home", "Contact", "Blog", "404"],
+    links: ["Home", "Projects", "Skills", "About me"],
   },
   {
-    heading: "Essential",
-    links: ["About me", "Service", "Portfolio", "Let's talk"],
+    heading: "Find me",
+    links: ["LinkedIn", "GitHub", "Email", "Resume"],
   },
   {
-    heading: "Services",
+    heading: "Skills",
     links: [
-      "UI & UX Design",
-      "Logo & Branding",
-      "Developer Support",
-      "Branding Strategy",
+      "Digital Marketing",
+      "Website Development",
+      "Client Servicing",
+      "Operations",
     ],
   },
 ];

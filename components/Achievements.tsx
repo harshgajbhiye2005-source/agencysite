@@ -15,7 +15,7 @@ export default function Achievements() {
       <div className="mt-20">
         {achievements.map((item, i) => (
           <Reveal key={item.title} delay={i * 0.07}>
-            <div className="group grid items-center gap-6 border-t border-line py-10 last:border-b sm:grid-cols-[80px_auto_1fr_auto]">
+            <div className="group grid items-center gap-6 border-t border-line py-10 last:border-b sm:grid-cols-[110px_auto_1fr_auto]">
               <span className="text-base text-muted">{item.year}</span>
               {/* Thumbnail placeholders */}
               <div className="flex gap-2">

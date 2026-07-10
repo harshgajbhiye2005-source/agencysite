@@ -83,7 +83,7 @@ export default function Contact() {
         <Reveal delay={0.15}>
           <div className="relative aspect-[4/5] w-full overflow-hidden bg-neutral-400 grayscale">
             <Image
-              src="/portrait.jpg"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/portrait.jpg`}
               alt="Harsh Gajbhiye"
               fill
               sizes="(min-width: 1024px) 40rem, 100vw"

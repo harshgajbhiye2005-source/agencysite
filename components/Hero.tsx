@@ -66,7 +66,7 @@ export default function Hero() {
             {/* Portrait — served from public/portrait.jpg; grayscale keeps the B&W look */}
             <div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-400 grayscale">
               <Image
-                src="/portrait.jpg"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/portrait.jpg`}
                 alt={site.name}
                 fill
                 priority

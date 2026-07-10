@@ -59,7 +59,6 @@ export const services = [
 export const projects = [
   { title: "PS Group Website", year: "Completed", client: "Client work" },
   { title: "Artistically Yours", year: "In progress", client: "Client work" },
-  { title: "Portfolio Website", year: "2026", client: "Personal · Next.js" },
 ];
 
 export const whyCards = [

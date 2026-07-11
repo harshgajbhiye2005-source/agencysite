@@ -55,10 +55,21 @@ export const services = [
   },
 ];
 
-// Featured projects list — title / status / context.
+// Featured projects list — title / status / context. Add a `href` to make
+// the card link out to the live site.
 export const projects = [
-  { title: "PS Group Website", year: "Completed", client: "Client work" },
-  { title: "Artistically Yours", year: "In progress", client: "Client work" },
+  {
+    title: "PS Group Website",
+    year: "Completed",
+    client: "Client work",
+    href: "https://psgroupnagpur.tiiny.site/",
+  },
+  {
+    title: "Artistically Yours",
+    year: "In progress",
+    client: "Client work",
+    href: "",
+  },
 ];
 
 export const whyCards = [

@@ -18,8 +18,8 @@ export default function Work() {
         </Reveal>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {projects.map((project, i) => (
-            <Reveal key={project.title} delay={i * 0.08}>
+          {projects.map((project, i) => {
+            const card = (
               <article className="flex h-full flex-col justify-between rounded-2xl border border-line bg-white p-8 transition-shadow duration-300 hover:shadow-lg sm:p-10">
                 <div>
                   <span
@@ -33,12 +33,36 @@ export default function Work() {
                     {project.title}
                   </h3>
                 </div>
-                <p className="mt-4 text-sm font-medium text-muted">
-                  {project.client}
-                </p>
+                <div className="mt-4 flex items-center justify-between gap-4">
+                  <p className="text-sm font-medium text-muted">
+                    {project.client}
+                  </p>
+                  {project.href && (
+                    <span className="text-sm font-semibold text-accent">
+                      Visit site ↗
+                    </span>
+                  )}
+                </div>
               </article>
-            </Reveal>
-          ))}
+            );
+
+            return (
+              <Reveal key={project.title} delay={i * 0.08}>
+                {project.href ? (
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block h-full"
+                  >
+                    {card}
+                  </a>
+                ) : (
+                  card
+                )}
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

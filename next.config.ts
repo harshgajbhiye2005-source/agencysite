@@ -5,7 +5,7 @@ const basePath = process.env.PAGES_BASE_PATH ?? "";
 const nextConfig: NextConfig = {
   // Static export so the site can be hosted on GitHub Pages.
   output: "export",
-  // The Pages site lives at <user>.github.io/agencysite — assets must resolve
+  // The Pages site lives at <user>.github.io/portfolio — assets must resolve
   // under that subpath. Remove basePath when moving to a custom domain.
   basePath,
   // next/image does not prefix basePath onto src, so components prepend

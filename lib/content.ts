@@ -133,13 +133,9 @@ export const achievements = [
   },
   {
     year: "Cricket",
-    title: "International Captain",
-    award: "India U-19, Karwan Global Cricket League, Dubai · Best Captain",
-  },
-  {
-    year: "Cricket",
-    title: "National Level",
-    award: "Represented Maharashtra · 64th National School Games",
+    title: "International & National",
+    award:
+      "India U-19, Karwan Global Cricket League, Dubai · Represented Maharashtra, 64th National School Games",
   },
   {
     year: "Badminton",

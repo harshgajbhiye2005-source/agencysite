@@ -14,6 +14,7 @@ export const site = {
   email: "harsh.gajbhiye2005@gmail.com",
   phone: "+91 95038 72686",
   location: "Nagpur, Maharashtra",
+  resume: "/Harsh-Gajbhiye-Resume.pdf",
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/harsh-gajbhiye" },
     { label: "GitHub", href: "https://github.com/harshgajbhiye2005-source" },
@@ -56,8 +57,17 @@ export const services = [
 ];
 
 // Featured projects list — title / status / context. Add a `href` to make
-// the card link out to the live site.
-export const projects = [
+// the whole card link out to a live site, or `links` for a row of labeled
+// links inside the card.
+export type Project = {
+  title: string;
+  year: string;
+  client: string;
+  href?: string;
+  links?: { label: string; href: string }[];
+};
+
+export const projects: Project[] = [
   {
     title: "PS Group Website",
     year: "Completed",
@@ -69,6 +79,25 @@ export const projects = [
     year: "In progress",
     client: "Client work",
     href: "",
+  },
+  {
+    title: "Artistically Yours — Social Content",
+    year: "Internship",
+    client: "Content published on the client's Instagram",
+    links: [
+      {
+        label: "On-camera reel",
+        href: "https://www.instagram.com/reel/DMAg7UsztpN/",
+      },
+      {
+        label: "Content concept 1",
+        href: "https://www.instagram.com/reel/DNH8QYXTjU-/",
+      },
+      {
+        label: "Content concept 2",
+        href: "https://www.instagram.com/reel/DLxQTcTT8oD/",
+      },
+    ],
   },
 ];
 
@@ -104,13 +133,13 @@ export const achievements = [
   },
   {
     year: "Cricket",
-    title: "International Level",
-    award: "Played internationally",
+    title: "International Captain",
+    award: "India U-19, Karwan Global Cricket League, Dubai · Best Captain",
   },
   {
     year: "Cricket",
     title: "National Level",
-    award: "Represented Maharashtra",
+    award: "Represented Maharashtra · 64th National School Games",
   },
   {
     year: "Badminton",

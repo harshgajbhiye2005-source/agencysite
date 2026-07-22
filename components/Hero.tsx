@@ -55,6 +55,14 @@ export default function Hero() {
             >
               Email me
             </a>
+            <a
+              href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${site.resume}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-transform duration-200 hover:scale-[1.04]"
+            >
+              Resume ↗
+            </a>
             {site.socials.map((social) => (
               <a
                 key={social.label}

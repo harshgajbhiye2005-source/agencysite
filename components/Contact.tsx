@@ -29,6 +29,14 @@ export default function Contact() {
               >
                 {site.phone}
               </a>
+              <a
+                href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${site.resume}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-line-invert px-7 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
+              >
+                Resume ↗
+              </a>
               {site.socials.map((social) => (
                 <a
                   key={social.label}

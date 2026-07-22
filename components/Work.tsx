@@ -4,6 +4,7 @@ import { projects } from "@/lib/content";
 const statusStyles: Record<string, string> = {
   Completed: "bg-emerald-100 text-emerald-800",
   "In progress": "bg-amber-100 text-amber-800",
+  Internship: "bg-accent-soft text-accent",
 };
 
 export default function Work() {
@@ -33,14 +34,31 @@ export default function Work() {
                     {project.title}
                   </h3>
                 </div>
-                <div className="mt-4 flex items-center justify-between gap-4">
-                  <p className="text-sm font-medium text-muted">
-                    {project.client}
-                  </p>
-                  {project.href && (
-                    <span className="text-sm font-semibold text-accent">
-                      Visit site ↗
-                    </span>
+                <div className="mt-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <p className="text-sm font-medium text-muted">
+                      {project.client}
+                    </p>
+                    {project.href && (
+                      <span className="text-sm font-semibold text-accent">
+                        Visit site ↗
+                      </span>
+                    )}
+                  </div>
+                  {project.links && (
+                    <div className="mt-5 flex flex-wrap gap-2.5">
+                      {project.links.map((link) => (
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="rounded-full border border-line px-4 py-2 text-xs font-semibold text-accent transition-colors duration-200 hover:border-accent"
+                        >
+                          {link.label} ↗
+                        </a>
+                      ))}
+                    </div>
                   )}
                 </div>
               </article>
